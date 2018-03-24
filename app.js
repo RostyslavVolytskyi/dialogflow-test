@@ -33,16 +33,12 @@ const NUMBER_ARGUMENT = 'number';
 const GAME_ARGUMENT = 'game';
 
 app.post('/', function (request, response) {
-    console.log('headers: ' + JSON.stringify(request.headers));
-    console.log('body: ' + JSON.stringify(request.body));
-
-    const app = new App({request, response});
+    const dialogApp = new App({request, response});
     console.log('Request headers: ' + JSON.stringify(request.headers));
     console.log('Request body: ' + JSON.stringify(request.body));
 
-
     function welcomeIntentQuestion (app) {
-        app.ask(`Hi Dude! Welcome to Silly Name Maker! Let's get started. What is your lucky number?`,
+        dialogApp.ask(`Hi Dude! Welcome to Silly Name Maker! Let's get started. What is your lucky number?`,
             ['I didn\'t hear a number', 'If you\'re still there, what\'s your lucky number?',
                 'We can stop here. Let\'s play again soon. Bye!']);
     }
@@ -51,7 +47,7 @@ app.post('/', function (request, response) {
     function makeName (app) {
         let number = app.getArgument(NUMBER_ARGUMENT);
         let color = app.getArgument(COLOR_ARGUMENT);
-        app.ask(`Alright! Your super silly name is "${color} ${number}"! I hope you like it. Which kind of sport do you like to play?`);
+        dialogApp.ask(`Alright! Your super silly name is "${color} ${number}"! I hope you like it. Which kind of sport do you like to play?`);
     }
 
     function createSmthWithGame (app) {
@@ -63,7 +59,7 @@ app.post('/', function (request, response) {
         const number = context.parameters.number;
 
 
-        app.tell(`Wazuuup "${color} ${number}"!!! I like also to play your ${game.original}`);
+        dialogApp.tell(`Wazuuup "${color} ${number}"!!! I like also to play your ${game.original}`);
     }
 
     // d. build an action map, which maps intent names to functions
@@ -73,7 +69,7 @@ app.post('/', function (request, response) {
     actionMap.set(NAME_ACTION, makeName);
     actionMap.set(GAME_ACTION, createSmthWithGame);
 
-    app.handleRequst(actionMap);
+    dialogApp.handleRequst(actionMap);
 
     // response.sendStatus(200); // OK
 });
