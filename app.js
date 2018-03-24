@@ -19,6 +19,7 @@ app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/app/index.html'));
+    console.log('to get???????????????????????????')
 });
 
 
@@ -34,7 +35,6 @@ const GAME_ARGUMENT = 'game';
 
 app.post('/', function (request, response) {
     const dialogApp = new DialogflowApp({request, response});
-    console.log('dialogApp', dialogApp);
     console.log('Request headers: ' + JSON.stringify(request.headers));
     console.log('Request body: ' + JSON.stringify(request.body));
 
