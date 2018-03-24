@@ -53,13 +53,9 @@ app.post('/', function (request, response) {
 
     function createSmthWithGame (app) {
         let context = app.getContext('namecreated');
-
         const game = app.getContextArgument(context.name, GAME_ARGUMENT);
-
         const color = context.parameters.color;
         const number = context.parameters.number;
-
-
         dialogApp.tell(`Wazuuup "${color} ${number}"!!! I like also to play your ${game.original}`);
     }
 
@@ -70,7 +66,7 @@ app.post('/', function (request, response) {
     actionMap.set(NAME_ACTION, makeName);
     actionMap.set(GAME_ACTION, createSmthWithGame);
 
-    dialogApp.handleRequst(actionMap);
+    dialogApp.handleRequest(actionMap);
 
     // response.sendStatus(200); // OK
 });
