@@ -1,14 +1,11 @@
 {
-  "name": "number-genie",
-  "description": "Google Actions Number Genie sample for Node.js",
+  "name": "dialogflow-test",
+  "description": "backend for testing 'future' firebse functions",
   "version": "0.0.1",
-  "private": true,
-  "license": "Apache-2.0",
-  "author": "Google Inc.",
+  "license": "ISC",
+  "author": "Rosty",
   "scripts": {
-    "start": "node app.js",
-    "monitor": "nodemon app.js",
-    "deploy": "gcloud app deploy"
+    "start": "node app.js"
   },
   "dependencies": {
     "actions-on-google": "^1.0.0",
@@ -17,7 +14,5 @@
     "sprintf-js": "^1.0.3",
     "morgan": "^1.9.0"
   },
-  "devDependencies": {
-
-  }
+  "devDependencies": {}
 }
