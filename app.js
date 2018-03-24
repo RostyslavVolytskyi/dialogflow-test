@@ -2,7 +2,7 @@
 process.env.DEBUG = 'actions-on-google:*';
 // https://us-central1-sillynamemaker-e3a42.cloudfunctions.net/sillyNameMaker
 
-let App = require('actions-on-google').DialogflowApp;
+let DialogflowApp = require('actions-on-google').DialogflowApp;
 let express = require('express');
 let bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -33,7 +33,8 @@ const NUMBER_ARGUMENT = 'number';
 const GAME_ARGUMENT = 'game';
 
 app.post('/', function (request, response) {
-    const dialogApp = new App({request, response});
+    const dialogApp = new DialogflowApp({request, response});
+    console.log('dialogApp', dialogApp);
     console.log('Request headers: ' + JSON.stringify(request.headers));
     console.log('Request body: ' + JSON.stringify(request.body));
 
